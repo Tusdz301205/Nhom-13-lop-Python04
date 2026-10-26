@@ -24,6 +24,10 @@ class LichTrinh:
     def _kiem_tra_hoat_dong(self, hoat_dong: HoatDongLichTrinh) -> None:
         if not isinstance(hoat_dong, HoatDongLichTrinh):
             raise ValueError("Hoạt động phải là HoatDongLichTrinh.")
+        # Đối tượng có thể đã bị gán lại thuộc tính sau constructor.
+        self._chuoi_bat_buoc(hoat_dong.ma_hoat_dong, "Mã hoạt động")
+        self._chuoi_bat_buoc(hoat_dong.dia_diem, "Địa điểm")
+        self._chuoi_bat_buoc(hoat_dong.noi_dung, "Nội dung")
         if hoat_dong.ma_lich_trinh != self.ma_lich_trinh:
             raise ValueError("Hoạt động không thuộc lịch trình này.")
         if not hoat_dong.kiem_tra_thoi_gian_hop_le():
