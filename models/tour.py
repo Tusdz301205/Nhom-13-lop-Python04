@@ -4,7 +4,11 @@ from __future__ import annotations
 
 
 class Tour:
-    """Quản lý thông tin và trạng thái kinh doanh của một tour."""
+    """Sản phẩm tour tham chiếu điểm đến chính qua ma_diem_den.
+
+    ma_diem_den thay cho diem_den dạng tên tự do ở phiên bản trước.
+    Lớp quản lý nghiệp vụ sẽ kiểm tra mã điểm đến có tồn tại hay không.
+    """
 
     DANG_KINH_DOANH = "DANG_KINH_DOANH"
     NGUNG_KINH_DOANH = "NGUNG_KINH_DOANH"
@@ -14,13 +18,13 @@ class Tour:
         self,
         ma_tour: str,
         ten_tour: str,
-        diem_den: str,
+        ma_diem_den: str,
         mo_ta: str = "",
         trang_thai: str = DANG_KINH_DOANH,
     ) -> None:
         self.ma_tour: str = self._chuoi_bat_buoc(ma_tour, "Mã tour")
         self.ten_tour: str = self._chuoi_bat_buoc(ten_tour, "Tên tour")
-        self.diem_den: str = self._chuoi_bat_buoc(diem_den, "Điểm đến")
+        self.ma_diem_den: str = self._chuoi_bat_buoc(ma_diem_den, "Mã điểm đến")
         self.mo_ta: str = self._chuoi_tuy_chon(mo_ta)
         self.trang_thai: str = self._kiem_tra_trang_thai(trang_thai)
 
@@ -46,15 +50,15 @@ class Tour:
     def cap_nhat_thong_tin(
         self,
         ten_tour: str | None = None,
-        diem_den: str | None = None,
+        ma_diem_den: str | None = None,
         mo_ta: str | None = None,
     ) -> None:
         """Kiểm tra đầy đủ trước khi cập nhật; None nghĩa là giữ nguyên."""
         ten_moi = self.ten_tour if ten_tour is None else self._chuoi_bat_buoc(ten_tour, "Tên tour")
-        diem_moi = self.diem_den if diem_den is None else self._chuoi_bat_buoc(diem_den, "Điểm đến")
+        diem_moi = self.ma_diem_den if ma_diem_den is None else self._chuoi_bat_buoc(ma_diem_den, "Mã điểm đến")
         mo_ta_moi = self.mo_ta if mo_ta is None else self._chuoi_tuy_chon(mo_ta)
         self.ten_tour = ten_moi
-        self.diem_den = diem_moi
+        self.ma_diem_den = diem_moi
         self.mo_ta = mo_ta_moi
 
     def dang_kinh_doanh(self) -> bool:

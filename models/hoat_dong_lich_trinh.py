@@ -6,7 +6,11 @@ from datetime import time
 
 
 class HoatDongLichTrinh:
-    """Một hoạt động tại một thời điểm cụ thể của ngày thứ N trong tour."""
+    """Một hoạt động trong ngày thứ N, dùng giờ địa phương không kèm múi giờ.
+
+    LichTrinh kiểm tra trùng giờ giữa các hoạt động. Việc kiểm tra ngay_thu
+    có vượt thời lượng DotKhoiHanh cụ thể thuộc tầng nghiệp vụ sau này.
+    """
 
     def __init__(
         self,
