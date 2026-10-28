@@ -7,7 +7,13 @@ from decimal import Decimal
 
 
 class DotKhoiHanh:
-    """Quản lý ngày đi/về, giá, sức chứa và trạng thái mở bán của một đợt."""
+    """Quản lý ngày đi/về, giá, sức chứa và trạng thái mở bán của một đợt.
+
+    Class được tiếp nhận bảo trì từ mã hiện hữu (giữ nguyên thuộc tính,
+    trạng thái và phương thức). Class không tự đọc danh sách DatTour:
+    so_cho_da_chiem do lớp quản lý nghiệp vụ tính rồi truyền vào. Việc đếm
+    đơn CHO_XAC_NHAN hay chỉ DA_XAC_NHAN là quy tắc cần chốt khi tích hợp.
+    """
 
     MO_BAN = "MO_BAN"
     DONG_BAN = "DONG_BAN"
